@@ -3,7 +3,6 @@ import 'package:html_parser/html.dart';
 void main(List<String> arguments) async {
   var test = Lexical.formString("""
     <div id="js-global-screen-reader-notice" class="sr-only" aria-live="polite"></div>
-
  
 """);
   for (;;) {
