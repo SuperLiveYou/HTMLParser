@@ -2,9 +2,6 @@ import 'dart:io';
 
 /// 令牌类型
 enum TokenTypes {
-  /// 解析错误
-  error,
-
   /// 字符串，被"或者'包裹起来的文字
   string,
 
@@ -79,13 +76,6 @@ class Token {
     required this.line,
   }) : type = TokenTypes.operator;
 
-  /// 解析错误
-  Token.errorType({
-    required this.val,
-    required this.pos,
-    required this.line,
-  }) : type = TokenTypes.error;
-
   /// 解析结束
   Token.endType({
     required this.pos,
@@ -98,6 +88,8 @@ class Token {
 class Lexical {
   /// 起始行
   int _startLine = 0;
+
+  /// 起始位置
   int _startPos = 0;
 
   /// 储存代码的字符串
@@ -113,10 +105,7 @@ class Lexical {
   int pos = 1;
 
   /// 从字符串中读取
-  Lexical.formString(this.code);
-
-  /// 从给出的路径中读取
-  Lexical.formFile(String path) : code = File(path).readAsStringSync();
+  Lexical({required this.code});
 
   /// 检查索引是否到底了
   ///
@@ -257,7 +246,6 @@ class Lexical {
         //case "&":
         case "\"":
         case "'":
-          _getChar(addIndex: true);
           break loop;
       }
       val += char;
@@ -268,7 +256,7 @@ class Lexical {
   }
 
   /// 一次返回一个解析出的令牌
-  Token getToken() {
+  Token nextToken() {
     _startLine = line;
     _startPos = pos;
     // 是否结束，结束就直接返回

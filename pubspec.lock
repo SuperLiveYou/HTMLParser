@@ -29,6 +29,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.10.0"
+  belatuk_json_serializer:
+    dependency: "direct main"
+    description:
+      name: belatuk_json_serializer
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "6.0.1"
   boolean_selector:
     dependency: transitive
     description:
