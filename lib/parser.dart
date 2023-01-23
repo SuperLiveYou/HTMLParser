@@ -13,7 +13,10 @@ class Label {
 
 // html属性结构
 class Attribute {
+  /// 属性名称
   String name;
+
+  /// 属性值
   String value;
   Attribute({
     required this.name,
@@ -21,6 +24,4 @@ class Attribute {
   });
 }
 
-class Parser {
-  Parser();
-}
+class Parser {}
